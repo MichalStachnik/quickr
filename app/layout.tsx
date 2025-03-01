@@ -4,7 +4,9 @@ import './globals.css';
 import { ClerkProvider } from '@clerk/nextjs';
 import 'react-toastify/dist/ReactToastify.css';
 import { ThemeProvider } from './components/ThemeProvider';
-import { SidebarProvider } from '@/components/ui/sidebar';
+import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
+import Header from './components/Header';
+import AppSidebar from './components/AppSidebar';
 
 const roboto = Roboto({
   weight: '400',
@@ -31,7 +33,17 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <SidebarProvider>{children}</SidebarProvider>
+            <SidebarProvider>
+              <AppSidebar />
+              <SidebarInset>
+                <main className="bg-background text-foreground min-h-screen mx-auto px-4 w-full">
+                  <Header />
+                  <div className="max-w-3xl mx-auto space-y-8 my-4">
+                    {children}
+                  </div>
+                </main>
+              </SidebarInset>
+            </SidebarProvider>
           </ThemeProvider>
         </body>
       </html>

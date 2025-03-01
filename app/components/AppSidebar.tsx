@@ -6,20 +6,22 @@ import {
   SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
+  SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
+import Link from 'next/link';
 
 const items = [
   {
     title: 'Dashboard',
-    url: '#',
+    url: '/',
     icon: Home,
   },
   {
     title: 'Expenses',
-    url: '#',
+    url: '/expenses',
     icon: Inbox,
   },
   // {
@@ -40,16 +42,16 @@ const AppSidebar = () => {
     <Sidebar collapsible="icon">
       <SidebarContent>
         <SidebarGroup>
-          {/* <SidebarGroupLabel>Quicker Books</SidebarGroupLabel> */}
+          <SidebarGroupLabel>Quickr</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <a href={item.url}>
+                    <Link href={item.url}>
                       <item.icon />
                       <span>{item.title}</span>
-                    </a>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}

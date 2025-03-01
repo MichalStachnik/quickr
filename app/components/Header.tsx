@@ -3,6 +3,7 @@ import Link from 'next/link';
 import ThemeToggle from './ThemeToggle';
 import ScrollingText from './ScrollingText';
 import { SidebarTrigger } from '@/components/ui/sidebar';
+import { Button } from '@/components/ui/button';
 
 const Header = async () => {
   return (
@@ -10,15 +11,19 @@ const Header = async () => {
       <SidebarTrigger />
       <div className="mx-auto px-4 h-16 flex items-center justify-between w-full">
         <Link href="/" className="text-xl font-bold hover:opacity-80">
-          Quicker Books
+          Quickr
         </Link>
         <div className="w-[140px]">
-          <ScrollingText />
+          <SignedOut>
+            <ScrollingText />
+          </SignedOut>
         </div>
         <div className="flex items-center gap-4">
           <ThemeToggle />
           <SignedOut>
-            <SignInButton />
+            <SignInButton>
+              <Button>Sign In</Button>
+            </SignInButton>
           </SignedOut>
           <SignedIn>
             <UserButton />
