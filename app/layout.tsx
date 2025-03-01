@@ -12,7 +12,7 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: 'Quickr',
+  title: 'Quicker Books',
   description: 'a minimalist expense tracker app',
 };
 
