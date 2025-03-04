@@ -48,7 +48,8 @@ export function ChatButton() {
             <div className="space-y-4">
               <div className={'flex justify-start'}>
                 <div className={`rounded-lg px-3 py-2 max-w-[80%] bg-muted`}>
-                  Hi, I am your personal expense assitant, what can I help with?
+                  Hi, I am your personal expense assistant, what can I help
+                  with?
                 </div>
               </div>
               {messages.map((message, index) => (
