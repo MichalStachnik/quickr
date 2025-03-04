@@ -6,6 +6,7 @@ import TransactionList from './components/TransactionList';
 import { ToastContainer } from 'react-toastify';
 import { ChatButton } from './components/ChatButton';
 import BalanceContainer from './components/BalanceContainer';
+import IncomeExpenseChart from './components/IncomeExpenseChart';
 
 const HomePage = async () => {
   const user = await currentUser();
@@ -16,6 +17,7 @@ const HomePage = async () => {
         <>
           <BalanceContainer />
           <IncomeExpense />
+          <IncomeExpenseChart />
           <AddTransaction />
           <TransactionList />
           <ChatButton />
