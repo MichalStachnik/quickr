@@ -1,14 +1,17 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import getUserBalance from '../actions/getUserBalance';
+
+import { motion } from 'motion/react';
+import { useState } from 'react';
 import AnimatedNumberBasic from './AnimatedNumberBasic';
 import { Tilt } from '@/components/motion/tilt-card';
 import { GlowEffect } from '@/components/motion/glow-effect';
-import { motion } from 'motion/react';
-import { useState } from 'react';
 
-const Balance = ({ balance }: { balance: number | undefined }) => {
+interface GlowingCardProps {
+  title: string;
+  numberValue: number | undefined;
+}
+
+const GlowingCard = ({ title, numberValue }: GlowingCardProps) => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
   return (
@@ -36,13 +39,13 @@ const Balance = ({ balance }: { balance: number | undefined }) => {
             duration={4}
           />
         </motion.div>
-        <div className="relative flex h-full flex-col items-center justify-center rounded-md border border-zinc-300/40 bg-zinc-100 px-4 py-3 dark:border-zinc-700/40 dark:bg-zinc-900">
-          <div>Balance: </div>
-          <AnimatedNumberBasic value={balance ?? 0} />
+        <div className="relative flex h-full flex-col items-center justify-center rounded-md border border-zinc-300/40 bg-card px-4 py-3 dark:border-zinc-700/40 dark:bg-card">
+          <div>{title}</div>
+          <AnimatedNumberBasic value={numberValue ?? 0} />
         </div>
       </div>
     </Tilt>
   );
 };
 
-export default Balance;
+export default GlowingCard;

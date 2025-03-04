@@ -1,9 +1,9 @@
 import getUserBalance from '../actions/getUserBalance';
-import Balance from './Balance';
+import GlowingCard from './GlowingCard';
 
 const BalanceContainer = async () => {
   const { balance } = await getUserBalance();
-  return <Balance balance={balance} />;
+  return <GlowingCard title="Balance:" numberValue={balance} />;
 };
 
 export default BalanceContainer;
