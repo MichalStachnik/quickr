@@ -1,30 +1,14 @@
 import { currentUser } from '@clerk/nextjs/server';
-import Guest from './components/Guest';
-import AddTransaction from './components/AddTransaction';
-import IncomeExpense from './components/IncomeExpense';
-import TransactionList from './components/TransactionList';
 import { ToastContainer } from 'react-toastify';
-import { ChatButton } from './components/ChatButton';
-import BalanceContainer from './components/BalanceContainer';
-import IncomeExpenseChart from './components/IncomeExpenseChart';
+import GuestApp from './components/GuestApp';
+import LoggedInApp from './components/LoggedInApp';
 
 const HomePage = async () => {
   const user = await currentUser();
 
   return (
     <>
-      {user ? (
-        <>
-          <BalanceContainer />
-          <IncomeExpense />
-          <IncomeExpenseChart />
-          <AddTransaction />
-          <TransactionList />
-          <ChatButton />
-        </>
-      ) : (
-        <Guest />
-      )}
+      {user ? <LoggedInApp /> : <GuestApp />}
       <ToastContainer theme="dark" />
     </>
   );
