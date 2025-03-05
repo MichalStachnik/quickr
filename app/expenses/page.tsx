@@ -8,6 +8,7 @@ import {
 import IncomeExpenseChart from '../components/IncomeExpenseChart';
 import { currentUser } from '@clerk/nextjs/server';
 import LocalIncomeExpenseChart from '../components/LoggedOut/LocalIncomeExpenseChart';
+import { TransactionProvider } from '@/context/TransactionContext';
 
 const ExpensesPage = async () => {
   const user = await currentUser();
@@ -19,7 +20,13 @@ const ExpensesPage = async () => {
         <CardDescription>at a glance</CardDescription>
       </CardHeader>
       <CardContent>
-        {user ? <IncomeExpenseChart /> : <LocalIncomeExpenseChart />}
+        {user ? (
+          <IncomeExpenseChart />
+        ) : (
+          <TransactionProvider>
+            <LocalIncomeExpenseChart />
+          </TransactionProvider>
+        )}
       </CardContent>
     </Card>
   );
