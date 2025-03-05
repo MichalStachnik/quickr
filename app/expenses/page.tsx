@@ -6,8 +6,12 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import IncomeExpenseChart from '../components/IncomeExpenseChart';
+import { currentUser } from '@clerk/nextjs/server';
+import LocalIncomeExpenseChart from '../components/LoggedOut/LocalIncomeExpenseChart';
 
-const ExpensesPage = () => {
+const ExpensesPage = async () => {
+  const user = await currentUser();
+
   return (
     <Card>
       <CardHeader>
@@ -15,7 +19,7 @@ const ExpensesPage = () => {
         <CardDescription>at a glance</CardDescription>
       </CardHeader>
       <CardContent>
-        <IncomeExpenseChart />
+        {user ? <IncomeExpenseChart /> : <LocalIncomeExpenseChart />}
       </CardContent>
     </Card>
   );
