@@ -45,15 +45,6 @@ const TransactionItem = ({ transaction }: { transaction: Transaction }) => {
     toast.success(message);
   };
 
-  // const openEditDialog = () => {
-  //   dialogRef.current?.showModal();
-  //   setFormData({
-  //     text: transaction.text,
-  //     amount: transaction.amount,
-  //   });
-  //   setPreviewUrl(transaction.imageUrl || null);
-  // };
-
   const closeEditDialog = () => {
     dialogRef.current?.close();
   };
@@ -142,75 +133,6 @@ const TransactionItem = ({ transaction }: { transaction: Transaction }) => {
         </div>
       </li>
 
-      <dialog ref={dialogRef} className="edit-dialog">
-        <form onSubmit={handleSubmit}>
-          <h3>Edit Transaction</h3>
-          <div className="form-control">
-            <label htmlFor="edit-text">Description</label>
-            <input
-              type="text"
-              id="edit-text"
-              name="text"
-              value={formData.text}
-              onChange={handleInputChange}
-              placeholder="Enter description"
-              required
-            />
-          </div>
-          <div className="form-control">
-            <label htmlFor="edit-amount">
-              Amount (+ for income, - for expense)
-            </label>
-            <input
-              type="number"
-              id="edit-amount"
-              name="amount"
-              value={formData.amount}
-              onChange={handleInputChange}
-              placeholder="Enter amount"
-              step="0.01"
-              required
-            />
-          </div>
-
-          <div className="form-control">
-            <label htmlFor="edit-receipt">Receipt Image</label>
-
-            <input
-              type="file"
-              id="edit-receipt"
-              name="receipt"
-              accept="image/*"
-              onChange={handleFileChange}
-            />
-
-            {previewUrl && (
-              <div className="image-preview">
-                <Image
-                  src={previewUrl}
-                  alt="Receipt preview"
-                  width={200}
-                  height={250}
-                  style={{ objectFit: 'contain' }}
-                />
-              </div>
-            )}
-          </div>
-
-          <div className="dialog-actions">
-            <button
-              type="button"
-              className="btn cancel-btn"
-              onClick={closeEditDialog}
-            >
-              Cancel
-            </button>
-            <button type="submit" className="btn update-btn">
-              Update
-            </button>
-          </div>
-        </form>
-      </dialog>
       <Dialog>
         <DialogTrigger asChild>
           <Button variant="outline">Edit Transaction</Button>
