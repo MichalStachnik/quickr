@@ -9,7 +9,6 @@ const LocalTransactionList = () => {
 
   return (
     <div>
-      <h3>Transactions</h3>
       <ul className="list">
         {transactions.map((transaction) => (
           <LocalTransactionItem

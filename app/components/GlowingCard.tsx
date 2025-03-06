@@ -9,9 +9,10 @@ import { GlowEffect } from '@/components/motion/glow-effect';
 interface GlowingCardProps {
   title: string;
   numberValue: number | undefined;
+  numberColor: string;
 }
 
-const GlowingCard = ({ title, numberValue }: GlowingCardProps) => {
+const GlowingCard = ({ title, numberValue, numberColor }: GlowingCardProps) => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
   return (
@@ -41,7 +42,10 @@ const GlowingCard = ({ title, numberValue }: GlowingCardProps) => {
         </motion.div>
         <div className="relative flex h-full flex-col items-center justify-center rounded-md border border-zinc-300/40 bg-card px-4 py-3 dark:border-zinc-700/40 dark:bg-card">
           <div>{title}</div>
-          <AnimatedNumberBasic value={numberValue ?? 0} />
+          <AnimatedNumberBasic
+            value={numberValue ?? 0}
+            numberColor={numberColor}
+          />
         </div>
       </div>
     </Tilt>
