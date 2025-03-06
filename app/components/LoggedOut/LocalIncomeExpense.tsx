@@ -8,8 +8,16 @@ const LocalIncomeExpense = () => {
 
   return (
     <div className="grid grid-cols-2 gap-4 my-8">
-      <GlowingCard title="Income" numberValue={income} />
-      <GlowingCard title="Expenses" numberValue={expense} />
+      <GlowingCard
+        title="Income"
+        numberValue={income}
+        numberColor="text-emerald-400"
+      />
+      <GlowingCard
+        title="Expenses"
+        numberValue={expense}
+        numberColor="text-rose-400"
+      />
     </div>
   );
 };
