@@ -5,7 +5,14 @@ import GlowingCard from '../GlowingCard';
 
 const LocalBalanceContainer = () => {
   const { balance } = useTransactions();
-  return <GlowingCard title="Balance:" numberValue={balance} />;
+  const numberColor = balance > 0 ? 'text-emerald-400' : 'text-rose-400';
+  return (
+    <GlowingCard
+      title="Balance:"
+      numberValue={balance}
+      numberColor={numberColor}
+    />
+  );
 };
 
 export default LocalBalanceContainer;

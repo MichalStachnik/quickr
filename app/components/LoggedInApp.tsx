@@ -8,10 +8,10 @@ import IncomeExpenseChart from './IncomeExpenseChart';
 const LoggedInApp = async () => {
   return (
     <>
+      <AddTransaction />
       <BalanceContainer />
       <IncomeExpense />
       <IncomeExpenseChart />
-      <AddTransaction />
       <TransactionList />
       <ChatButton />
     </>

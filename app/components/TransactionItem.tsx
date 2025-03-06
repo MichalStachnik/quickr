@@ -98,17 +98,13 @@ const TransactionItem = ({ transaction }: { transaction: Transaction }) => {
   }).format(transaction.amount);
 
   return (
-    <Card
-      className={`mb-4 ${
-        transaction.amount < 0 ? 'border-red-300' : 'border-green-300'
-      }`}
-    >
+    <Card className="mb-4">
       <CardHeader className="pb-2">
         <div className="flex justify-between items-center">
           <CardTitle>{transaction.text}</CardTitle>
           <span
             className={`text-xl font-bold ${
-              transaction.amount < 0 ? 'text-red-500' : 'text-green-500'
+              transaction.amount < 0 ? 'text-rose-400' : 'text-emerald-400'
             }`}
           >
             {formattedAmount}

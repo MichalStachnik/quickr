@@ -15,7 +15,7 @@ import { ChartData } from '../actions/getIncomeExpenseChartData';
 const chartConfig = {
   income: {
     label: 'Income',
-    color: 'var(--chart-2)',
+    color: 'var(--chart-1)',
   },
   expense: {
     label: 'Expense',

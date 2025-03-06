@@ -5,6 +5,7 @@ import { auth } from '@clerk/nextjs/server';
 const getIncomeExpense = async (): Promise<{
   income?: number;
   expense?: number;
+  average?: number;
   error?: string;
 }> => {
   const { userId } = await auth();
@@ -32,9 +33,15 @@ const getIncomeExpense = async (): Promise<{
       .filter((item) => item < 0)
       .reduce((acc, curr) => acc + curr, 0);
 
+    const average =
+      amounts.length > 0
+        ? amounts.reduce((acc, curr) => acc + curr, 0) / amounts.length
+        : 0;
+
     return {
       income,
       expense: Math.abs(expense),
+      average: Number(average.toFixed(2)),
     };
   } catch (error) {
     console.error('error', error);

@@ -1,4 +1,4 @@
-import { Home, Inbox, Settings } from 'lucide-react';
+import { ChartArea, Home, Inbox, Info, Settings } from 'lucide-react';
 
 import {
   Sidebar,
@@ -15,15 +15,25 @@ import Link from 'next/link';
 
 const items = [
   {
-    title: 'Dashboard',
+    title: 'Home',
     url: '/',
     icon: Home,
   },
   {
-    title: 'Expenses',
-    url: '/expenses',
+    title: 'Dashboard',
+    url: '/dashboard',
+    icon: ChartArea,
+  },
+  {
+    title: 'Transactions',
+    url: '/transactions',
     icon: Inbox,
   },
+  // {
+  //   title: 'Notifications',
+  //   url: '/notifications',
+  //   icon: SendHorizonal,
+  // },
   // {
   //   title: 'Calendar',
   //   url: '#',
@@ -32,8 +42,13 @@ const items = [
   // {s
   {
     title: 'Settings',
-    url: '#',
+    url: '/settings',
     icon: Settings,
+  },
+  {
+    title: 'About',
+    url: '/about',
+    icon: Info,
   },
 ];
 

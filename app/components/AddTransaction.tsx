@@ -6,6 +6,18 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ImagePlus, Plus } from 'lucide-react';
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
+import { Label } from '@/components/ui/label';
+import { BorderTrail } from '@/components/motion/border-trail';
 
 const AddTransaction = () => {
   const formRef = useRef<HTMLFormElement>(null);
@@ -33,72 +45,97 @@ const AddTransaction = () => {
       formRef.current?.reset();
     }
   };
-  return (
-    <div>
-      <h3>Add Transaction</h3>
-      <form ref={formRef} action={clientAction}>
-        <div className="form-control">
-          <label htmlFor="text">Income or Expense</label>
-          <Input
-            type="text"
-            id="text"
-            name="text"
-            placeholder="Enter Icome or Expense"
-            required
-          />
-        </div>
-        <div className="form-control">
-          <label htmlFor="amount">Amount (+ for income, - for expense)</label>
-          <Input
-            type="number"
-            id="amount"
-            name="amount"
-            placeholder="Enter amount"
-            step="0.01"
-            required
-          />
-        </div>
-        <div className="form-control">
-          <label htmlFor="receipt">Receipt Image (optional)</label>
-          <div className="relative">
-            <Button
-              type="button"
-              variant="secondary"
-              className="relative"
-              onClick={() => document.getElementById('receipt')?.click()}
-            >
-              <ImagePlus />
-              Add Receipt Image
-            </Button>
-            <input
-              type="file"
-              id="receipt"
-              name="receipt"
-              accept="image/*"
-              onChange={handleFileChange}
-              className="hidden"
-            />
-          </div>
 
-          {previewUrl && (
-            <div className="image-preview mt-4">
-              <Image
-                src={previewUrl}
-                alt="Receipt preview"
-                width={200}
-                height={250}
-                style={{ objectFit: 'contain' }}
-              />
-            </div>
-          )}
-        </div>
-        <div className="flex items-center justify-center mt-4">
-          <Button>
+  return (
+    <div className="flex justify-end mt-8">
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button className="relative" variant="outline" size="lg">
+            <BorderTrail
+              className="bg-linear-to-l from-blue-200 via-blue-500 to-blue-200 dark:from-blue-400 dark:via-blue-500 dark:to-blue-700"
+              size={20}
+            />
             <Plus />
             Add Transaction
           </Button>
-        </div>
-      </form>
+        </DialogTrigger>
+        <DialogContent className="sm:max-w-[425px]">
+          <form action={clientAction}>
+            <DialogHeader>
+              <DialogTitle>Add Transaction</DialogTitle>
+              <DialogDescription>Add an income or expense</DialogDescription>
+            </DialogHeader>
+            <div className="grid gap-4 py-4">
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="text" className="text-right">
+                  Description
+                </Label>
+                <Input
+                  className="col-span-3"
+                  type="text"
+                  id="text"
+                  name="text"
+                  placeholder="Enter a description"
+                  required
+                />
+              </div>
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="amount" className="text-right">
+                  Amount
+                </Label>
+                <Input
+                  className="col-span-3"
+                  type="number"
+                  id="amount"
+                  name="amount"
+                  placeholder="+ for income, - for expense"
+                  step="0.01"
+                  required
+                />
+              </div>
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="edit-receipt" className="text-right">
+                  Receipt Image
+                </Label>
+                <Button
+                  type="button"
+                  variant="secondary"
+                  className="col-span-3"
+                  onClick={() => document.getElementById('receipt')?.click()}
+                >
+                  <ImagePlus className="w-4 h-4 mr-2" />
+                  Add Receipt Image
+                </Button>
+                <Input
+                  className="hidden"
+                  type="file"
+                  id="receipt"
+                  name="receipt"
+                  accept="image/*"
+                  onChange={handleFileChange}
+                />
+
+                {previewUrl && (
+                  <div className="col-span-4 flex justify-center mt-2">
+                    <Image
+                      src={previewUrl}
+                      alt="Receipt preview"
+                      width={200}
+                      height={250}
+                      style={{ objectFit: 'contain' }}
+                    />
+                  </div>
+                )}
+              </div>
+            </div>
+            <DialogFooter>
+              <DialogClose asChild>
+                <Button type="submit">Add Transaction</Button>
+              </DialogClose>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

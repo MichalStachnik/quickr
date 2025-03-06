@@ -1,7 +1,8 @@
 'use client';
-import { cn } from '@/lib/utils';
-import { motion, SpringOptions, useSpring, useTransform } from 'motion/react';
+
 import { useEffect } from 'react';
+import { motion, SpringOptions, useSpring, useTransform } from 'motion/react';
+import { cn } from '@/lib/utils';
 
 export type AnimatedNumberProps = {
   value: number;
@@ -19,8 +20,12 @@ const AnimatedNumber = ({
   const MotionComponent = motion(as);
 
   const spring = useSpring(value, springOptions);
+
   const display = useTransform(spring, (current) =>
-    Math.round(current).toLocaleString()
+    new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    }).format(current)
   );
 
   useEffect(() => {
