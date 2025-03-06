@@ -21,6 +21,7 @@
     "@radix-ui/react-slot": "^1.1.2",
     "@radix-ui/react-tooltip": "^1.1.8",
     "@tailwindcss/postcss": "^4.0.9",
+    "@vercel/analytics": "^1.5.0",
     "ai": "^4.1.46",
     "class-variance-authority": "^0.7.1",
     "cloudinary": "^2.5.1",

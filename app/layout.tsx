@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Analytics } from '@vercel/analytics/react';
 import { Roboto } from 'next/font/google';
 import './globals.css';
 import { ClerkProvider } from '@clerk/nextjs';
@@ -45,6 +46,7 @@ export default function RootLayout({
               </SidebarInset>
             </SidebarProvider>
           </ThemeProvider>
+          <Analytics />
         </body>
       </html>
     </ClerkProvider>
